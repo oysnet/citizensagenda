@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>RESTful API &mdash; Citizens Agenda v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Citizens Agenda v0.1 documentation" href="index.html" />
+    <link rel="next" title="Types de documents" href="data.html" />
+    <link rel="prev" title="Welcome to Citizens Agenda’s documentation!" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="data.html" title="Types de documents"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Citizens Agenda’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Citizens Agenda v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="restful-api">
+<h1>RESTful API<a class="headerlink" href="#restful-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview-of-the-restful-api">
+<h2>Overview of the RESTful API<a class="headerlink" href="#overview-of-the-restful-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-it-works">
+<h3>How it works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h3>
+<p>Each of the api&#8217;s URI match a document or a subset of documents. HTTP methods define actions to do on the document(s).</p>
+<p>Theses methods are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>GET :         retrieve a document or a subset of documents</li>
+<li>POST :        create a new document</li>
+<li>PUT :         update a document</li>
+<li>DELETE :      delete a document</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="data-format">
+<h3>Data format<a class="headerlink" href="#data-format" title="Permalink to this headline">¶</a></h3>
+<p>Only JSON format is supported. You must set the Content-Type header at application/json in all requests to the server.</p>
+</div>
+<div class="section" id="api-responses">
+<h3>API responses<a class="headerlink" href="#api-responses" title="Permalink to this headline">¶</a></h3>
+<p>The API&#8217;s responses contain the standards HTTP codes which are significant of what happened.</p>
+<blockquote>
+<div><ul class="simple">
+<li>200 OK :                      all went successfully gone</li>
+<li>201 Created :         a new document was created</li>
+<li>204 Deleted :         a document was deleted</li>
+<li>400 Bad Request : the request is malformed</li>
+<li>401 Forbidden :       document ressource is forbidden</li>
+<li>404 Not Found :       document is not found</li>
+<li>500 Internal :        Server Error : a server internal error occurred</li>
+</ul>
+</div></blockquote>
+<div class="section" id="api-structure">
+<h4>API structure<a class="headerlink" href="#api-structure" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="uris">
+<h3>URIs<a class="headerlink" href="#uris" title="Permalink to this headline">¶</a></h3>
+<p>URI are prefixed with /api/, followed by the document’s type and optionnaly by the document identifier.</p>
+<blockquote>
+<div><p><em>URIs examples</em></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">/</span><span class="n">api</span><span class="o">/&lt;</span><span class="n">DOCUMENT_TYPE</span><span class="o">&gt;/</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">/</span><span class="n">api</span><span class="o">/&lt;</span><span class="n">DOCUMENT_TYPE</span><span class="o">&gt;/&lt;</span><span class="n">DOCUMENT_ID</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="playing-with-the-api">
+<h3>Playing with the API<a class="headerlink" href="#playing-with-the-api" title="Permalink to this headline">¶</a></h3>
+<p>Curl is used in examples bellow to make request to the server. If you&#8217;re not familiar with please take a look at <a class="reference external" href="http://curl.haxx.se/">http://curl.haxx.se/</a></p>
+<ol class="arabic">
+<li><p class="first">Get a document&#8217;s list</p>
+<blockquote>
+<div><p>It&#8217;s done by invoking the GET HTTP method on an URI like /api/&lt;DOCUMENT_TYPE&gt;/</p>
+<p><em>Request</em></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">curl</span> <span class="o">-</span><span class="n">XGET</span> <span class="n">http</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">HOST</span><span class="o">&gt;/</span><span class="n">api</span><span class="o">/&lt;</span><span class="n">DOCUMENT_TYPE</span><span class="o">&gt;/</span>
+</pre></div>
+</div>
+<p><em>Response</em></p>
+<p>The server returns data as below</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span>
+<span class="go">    &quot;total_rows&quot;:&lt;Database Document&#39;s count&gt;,</span>
+<span class="go">    &quot;rows&quot;:[{</span>
+<span class="go">           Document data...</span>
+<span class="go">           }]</span>
+<span class="go">    }</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>total_row is the document count of the specified type in the database, not in the response.</li>
+<li>rows contains the documents, see data structure for more explanations.</li>
+</ul>
+<p>1.1. Pagination</p>
+<blockquote>
+<div><p>Pagination is implemented by passing extra parameters in query string. These parameters are skip and limit.</p>
+<p>For example</p>
+<div class="highlight-python"><pre>&gt;&gt;&gt; curl -XGET http://&lt;HOST&gt;/api/&lt;DOCUMENT_TYPE&gt;/?skip=10&amp;limit=5</pre>
+</div>
+<p>This query will return documents from 10th to 15th</p>
+</div></blockquote>
+<p>1.2. Fulltext search</p>
+<blockquote>
+<div><p>Fulltext search is done by passing a fulltext parameter.</p>
+<p>For example</p>
+<div class="highlight-python"><pre>&gt;&gt;&gt; curl -XGET http://&lt;HOST&gt;/api/&lt;DOCUMENT_TYPE&gt;/?fulltext=&lt;SEARCH_STRING&gt;</pre>
+</div>
+<p>The search string can contain boolean operators such as AND and OR</p>
+<p>For example</p>
+<div class="highlight-python"><pre>&gt;&gt;&gt; curl -XGET http://&lt;HOST&gt;/api/&lt;DOCUMENT_TYPE&gt;/?fulltext="search_string OR another_search_string"</pre>
+</div>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">Get a document</p>
+<blockquote>
+<div><p>It&#8217;s done by invoking the  GET HTTP method on an URI like /api/&lt;DOCUMENT_TYPE&gt;/&lt;DOCUMENT_ID&gt;</p>
+<p><em>Request</em></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">curl</span> <span class="o">-</span><span class="n">XGET</span> <span class="n">http</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">HOST</span><span class="o">&gt;/</span><span class="n">api</span><span class="o">/&lt;</span><span class="n">DOCUMENT_TYPE</span><span class="o">&gt;/&lt;</span><span class="n">DOCUMENT_ID</span><span class="o">&gt;/</span>
+</pre></div>
+</div>
+<p><em>Response</em></p>
+<p>The server returns one document</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span> <span class="n">Document</span> <span class="n">data</span><span class="o">...</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Create a document</p>
+<blockquote>
+<div><p>It&#8217;s done by invoking the POST HTTP method on an URI like /api/&lt;DOCUMENT_TYPE&gt;/</p>
+<p><em>Request</em></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">curl</span> <span class="o">-</span><span class="n">XPOST</span> <span class="n">http</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">HOST</span><span class="o">&gt;/</span><span class="n">api</span><span class="o">/&lt;</span><span class="n">DOCUMENT_TYPE</span><span class="o">&gt;/</span> <span class="o">-</span><span class="n">H</span> <span class="s">&#39;Content-Type: application/json&#39;</span> <span class="o">-</span><span class="n">d</span> <span class="s">&#39;{</span>
+<span class="go">                &quot;an_attribute&quot; : &quot;a value&quot;, &quot;another_attribute&quot; : &quot;another value&quot;</span>
+<span class="go">        }&#39;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Do not forget the Content-Type parameter</p>
+</div>
+<p><em>Response</em></p>
+<p>The server returns the newly created document with some system attributes such as _id or _rev. Systems attributes are described HERE</p>
+</div></blockquote>
+</li>
+<li><p class="first">Update a document</p>
+<blockquote>
+<div><p>It&#8217;s done by invoking the PUT HTTP method on an URI like /api/&lt;DOCUMENT_TYPE&gt;/&lt;DOCUMENT_ID&gt;</p>
+<p><em>Request</em></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">curl</span> <span class="o">-</span><span class="n">XPUT</span> <span class="n">http</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">HOST</span><span class="o">&gt;/</span><span class="n">api</span><span class="o">/&lt;</span><span class="n">DOCUMENT_TYPE</span><span class="o">&gt;/</span> <span class="o">-</span><span class="n">H</span> <span class="s">&#39;Content-Type: application/json&#39;</span> <span class="o">-</span><span class="n">d</span> <span class="s">&#39;{</span>
+<span class="go">                &quot;an_attribute&quot; : &quot;an updated value&quot;, &quot;another_attribute&quot; : &quot;another value&quot;</span>
+<span class="go">        }&#39;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Do not forget the Content-Type parameter</p>
+</div>
+<p><em>Response</em></p>
+<p>The server returns the updated document.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Delete a document</p>
+<blockquote>
+<div><p>It&#8217;s done by invoking the DEL HTTP method on an URI like /api/&lt;DOCUMENT_TYPE&gt;/&lt;DOCUMENT_ID&gt;</p>
+<p><em>Request</em></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">curl</span> <span class="o">-</span><span class="n">XDEL</span> <span class="n">http</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">HOST</span><span class="o">&gt;/</span><span class="n">api</span><span class="o">/&lt;</span><span class="n">DOCUMENT_TYPE</span><span class="o">&gt;/&lt;</span><span class="n">DOCUMENT_ID</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><em>Response</em></p>
+<p>The server returns nothing</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="specifics-of-the-api-by-document-type">
+<h2>Specifics of the API by document type<a class="headerlink" href="#specifics-of-the-api-by-document-type" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="search">
+<h3>Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">For events</p>
+<blockquote>
+<div><p>Geographic and date time searchs are implemented.</p>
+<p>1.1. Geographic search</p>
+<blockquote>
+<div><p>Geographic search is a search that limits events contained in a bounding box.</p>
+<p>For example</p>
+<div class="highlight-python"><pre>&gt;&gt;&gt; curl -XGET http://&lt;HOST&gt;/api/event/?bbox=&lt;TOP_LEFT_LATITUDE&gt;,&lt;TOP_LEFT_LONGITUDE&gt;,&lt;RIGHT_BOTTOM_LATITUDE&gt;,&lt;RIGHT_BOTTOM_LONGITUDE&gt;</pre>
+</div>
+</div></blockquote>
+<p>1.2. Date time search</p>
+<blockquote>
+<div><p>Two parameters are availlable: start_time and end_time (optionnal)</p>
+<p>Lorsque seul le paramètre start_time est fourni, les évènements retournés sont ceux pour lesquels la date fournie est comprise entre les dates de début et de fin de l&#8217;évènement.</p>
+<p>Lorsque les deux paramètres start_time et end_time sont fournies, les évènements retournés sont ceux pour lesquels l&#8217;intersection des deux intervales de date n&#8217;est pas nul.</p>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">RESTful API</a><ul>
+<li><a class="reference internal" href="#overview-of-the-restful-api">Overview of the RESTful API</a><ul>
+<li><a class="reference internal" href="#how-it-works">How it works</a></li>
+<li><a class="reference internal" href="#data-format">Data format</a></li>
+<li><a class="reference internal" href="#api-responses">API responses</a><ul>
+<li><a class="reference internal" href="#api-structure">API structure</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#uris">URIs</a></li>
+<li><a class="reference internal" href="#playing-with-the-api">Playing with the API</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#specifics-of-the-api-by-document-type">Specifics of the API by document type</a><ul>
+<li><a class="reference internal" href="#search">Search</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to Citizens Agenda&#8217;s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="data.html"
+                        title="next chapter">Types de documents</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/rest.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="data.html" title="Types de documents"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to Citizens Agenda’s documentation!"
+             >previous</a> |</li>
+        <li><a href="index.html">Citizens Agenda v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Oxys SARL.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

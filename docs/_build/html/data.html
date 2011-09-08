@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Types de documents &mdash; Citizens Agenda v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Citizens Agenda v0.1 documentation" href="index.html" />
+    <link rel="prev" title="RESTful API" href="rest.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="rest.html" title="RESTful API"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Citizens Agenda v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="types-de-documents">
+<h1>Types de documents<a class="headerlink" href="#types-de-documents" title="Permalink to this headline">¶</a></h1>
+<p>Il existe quatres types de documents: <a class="reference internal" href="#doc-event"><em>event</em></a>, <a class="reference internal" href="#doc-user"><em>user</em></a>, <a class="reference internal" href="#doc-group"><em>group</em></a> et <a class="reference internal" href="#doc-schema"><em>schema</em></a>.</p>
+<p>Les documents de type <em>user</em> contiennent les informations relatives aux utilisateurs du service.</p>
+<p>Les documents de type <em>schema</em> sont des documents particuliers utilisés pour décrire et valider le contenu des documents de type <em>event</em></p>
+<div class="section" id="attributs-communs-a-tous-les-documents">
+<h2>Attributs communs à tous les documents<a class="headerlink" href="#attributs-communs-a-tous-les-documents" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Les attributs ci-dessous sont en lecture seule.</p>
+</div>
+<div class="section" id="common-id">
+<span id="id-string"></span><h3><tt class="docutils literal"><span class="pre">_id</span> <span class="pre">(String)</span></tt><a class="headerlink" href="#common-id" title="Permalink to this headline">¶</a></h3>
+<p>Identifiant unique au travers de tous les documents du service, quelques soient leurs types.</p>
+</div>
+<div class="section" id="rev-string">
+<h3><tt class="docutils literal"><span class="pre">_rev</span> <span class="pre">(String)</span></tt><a class="headerlink" href="#rev-string" title="Permalink to this headline">¶</a></h3>
+<p>Identifiant de révision.</p>
+</div>
+<div class="section" id="type-string">
+<h3><tt class="docutils literal"><span class="pre">type</span> <span class="pre">(String)</span></tt><a class="headerlink" href="#type-string" title="Permalink to this headline">¶</a></h3>
+<p>Le type de document: event, user ou schema.</p>
+</div>
+<div class="section" id="hash-string">
+<h3><tt class="docutils literal"><span class="pre">hash</span> <span class="pre">(String)</span></tt><a class="headerlink" href="#hash-string" title="Permalink to this headline">¶</a></h3>
+<p>Son mode de calcul est spécifique à chaque type de document. Cet attribut permet d&#8217;empecher la création de documents en double.</p>
+</div>
+</div>
+<div class="section" id="document-de-type-user">
+<span id="doc-user"></span><h2>Document de type <em>user</em><a class="headerlink" href="#document-de-type-user" title="Permalink to this headline">¶</a></h2>
+<p>Ces documents contiennent les données relatives aux comptes utilisateurs.</p>
+<div class="section" id="first-name-string">
+<h3><tt class="docutils literal"><span class="pre">first_name</span> <span class="pre">(String)</span></tt><a class="headerlink" href="#first-name-string" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Prénom de l&#8217;utilisateur</div></blockquote>
+</div>
+<div class="section" id="last-name-string">
+<h3><tt class="docutils literal"><span class="pre">last_name</span> <span class="pre">(String)</span></tt><a class="headerlink" href="#last-name-string" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Nom de l&#8217;utilisateur</div></blockquote>
+</div>
+<div class="section" id="email-string">
+<h3><tt class="docutils literal"><span class="pre">email</span> <span class="pre">(String)</span></tt><a class="headerlink" href="#email-string" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Adresse email de l&#8217;utilisateur.</div></blockquote>
+</div>
+<div class="section" id="password-string">
+<h3><tt class="docutils literal"><span class="pre">password</span> <span class="pre">(String)</span></tt><a class="headerlink" href="#password-string" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Mot de passe crypté de l&#8217;utilisateur.</div></blockquote>
+</div>
+<div class="section" id="is-active-boolean">
+<h3><tt class="docutils literal"><span class="pre">is_active</span> <span class="pre">(Boolean)</span></tt><a class="headerlink" href="#is-active-boolean" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Booléen indiquant si l&#8217;utilisateur est actif. Les utilisateurs inactifs ne peuvent pas accèder au service.</div></blockquote>
+</div>
+<div class="section" id="is-staff-boolean">
+<h3><tt class="docutils literal"><span class="pre">is_staff</span> <span class="pre">(Boolean)</span></tt><a class="headerlink" href="#is-staff-boolean" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Booléen indiquant si l&#8217;utilisateur est membre de l&#8217;équipe d&#8217;administration. Seule l&#8217;équipe d&#8217;administration a accès à l&#8217;outil d&#8217;administration.</p>
+<p>L&#8217;accès aux fonctionnalités de l&#8217;outils d&#8217;administration est affiné via une gestion de groupe.</p>
+</div></blockquote>
+</div>
+<div class="section" id="is-superuser-boolean">
+<h3><tt class="docutils literal"><span class="pre">is_superuser</span> <span class="pre">(Boolean)</span></tt><a class="headerlink" href="#is-superuser-boolean" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Booléen indiquant si l&#8217;utilisateur est super utilisateur. Un super utilisateur a accès sans restriction à toutes les fonctionnalités du service.</div></blockquote>
+</div>
+<div class="section" id="last-login-datetime">
+<h3><tt class="docutils literal"><span class="pre">last_login</span> <span class="pre">(Datetime)</span></tt><a class="headerlink" href="#last-login-datetime" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Date de la dernière authentification sur le service.</div></blockquote>
+</div>
+<div class="section" id="date-joined-datetime">
+<h3><tt class="docutils literal"><span class="pre">date_joined</span> <span class="pre">(Datetime)</span></tt><a class="headerlink" href="#date-joined-datetime" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Date d&#8217;inscription au service.</div></blockquote>
+</div>
+</div>
+<div class="section" id="document-de-type-event">
+<span id="doc-event"></span><h2>Document de type <em>event</em><a class="headerlink" href="#document-de-type-event" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="event-object">
+<span id="doc-event-event"></span><h3><tt class="docutils literal"><span class="pre">event</span> <span class="pre">(Object)</span></tt><a class="headerlink" href="#event-object" title="Permalink to this headline">¶</a></h3>
+<p>L&#8217;attribut <em>event</em> contient une structure de données décrivant l&#8217;évènement. Cette structure est contrainte par un document de type <a class="reference internal" href="#doc-schema"><em>schema</em></a>.</p>
+</div>
+<div class="section" id="author-string">
+<h3><tt class="docutils literal"><span class="pre">author</span> <span class="pre">(String)</span></tt><a class="headerlink" href="#author-string" title="Permalink to this headline">¶</a></h3>
+<p>Contient l&#8217;identifiant (attribut <a class="reference internal" href="#common-id"><em>_id</em></a>) du document de type <em>user</em></p>
+</div>
+<div class="section" id="status-enum">
+<h3><tt class="docutils literal"><span class="pre">status</span> <span class="pre">(Enum)</span></tt><a class="headerlink" href="#status-enum" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Définit le status de &#8216;évènement. Les valeur possible sont:</dt>
+<dd><ul class="first last simple">
+<li>canceled : annulé</li>
+<li>confirmed : confirmé</li>
+<li>tentative : proposition</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="write-groups-list">
+<h3><tt class="docutils literal"><span class="pre">write_groups</span> <span class="pre">(List)</span></tt><a class="headerlink" href="#write-groups-list" title="Permalink to this headline">¶</a></h3>
+<p>Contient les identifiant des documents de type <a class="reference internal" href="#doc-group"><em>group</em></a> ayant accès en écriture sur le document.</p>
+<p><strong>Si la longueur du tableau est 0, aucune restriction n&#8217;est appliquée.</strong></p>
+</div>
+<div class="section" id="read-groups-list">
+<h3><tt class="docutils literal"><span class="pre">read_groups</span> <span class="pre">(List)</span></tt><a class="headerlink" href="#read-groups-list" title="Permalink to this headline">¶</a></h3>
+<p>Contient les identifiant des documents de type <a class="reference internal" href="#doc-group"><em>group</em></a> ayant accès en lecture sur le document.</p>
+<p>Si la longueur du tableau est 0, aucune restriction n&#8217;est appliquée.</p>
+</div>
+<div class="section" id="write-users-list">
+<h3><tt class="docutils literal"><span class="pre">write_users</span> <span class="pre">(List)</span></tt><a class="headerlink" href="#write-users-list" title="Permalink to this headline">¶</a></h3>
+<p>Contient les identifiant des documents de type <a class="reference internal" href="#doc-user"><em>user</em></a> ayant accès en écriture sur le document.</p>
+<p>Si la longueur du tableau est 0, aucune restriction n&#8217;est appliquée.</p>
+</div>
+<div class="section" id="read-users-list">
+<h3><tt class="docutils literal"><span class="pre">read_users</span> <span class="pre">(List)</span></tt><a class="headerlink" href="#read-users-list" title="Permalink to this headline">¶</a></h3>
+<p>Contient les identifiant des documents de type <a class="reference internal" href="#doc-user"><em>user</em></a> ayant accès en lecture sur le document.</p>
+<p>Si la longueur du tableau est 0, aucune restriction n&#8217;est appliquée.</p>
+</div>
+</div>
+<div class="section" id="document-de-type-schema">
+<span id="doc-schema"></span><h2>Document de type <em>schema</em><a class="headerlink" href="#document-de-type-schema" title="Permalink to this headline">¶</a></h2>
+<p>Les documents de type <em>schema</em> sont des documents particuliers utiliser pour décrire et valider le contenu de l&#8217;attribut <a class="reference internal" href="#doc-event-event"><em>event</em></a> des documents de type <a class="reference internal" href="#doc-event"><em>event</em></a>.</p>
+<p>Comme les autres types de document, ce type de document contient des attributs systèmes ainsi que des attributs qui lui sont propres. Parmis ces attributs, l&#8217;attribut <a class="reference internal" href="#doc-schema-schema"><em>schema</em></a> contient les données utilisées pour la validation.</p>
+<div class="section" id="schema-object">
+<span id="doc-schema-schema"></span><h3><tt class="docutils literal"><span class="pre">schema</span> <span class="pre">(Object)</span></tt><a class="headerlink" href="#schema-object" title="Permalink to this headline">¶</a></h3>
+<p>Contient les données de validation. Il s&#8217;agit d&#8217;une structure d&#8217;objet définie par les spécifications <a class="reference external" href="http://tools.ietf.org/html/draft-zyp-json-schema-03">json-schema-03</a></p>
+</div>
+<div class="section" id="final-boolean">
+<h3><tt class="docutils literal"><span class="pre">final</span> <span class="pre">(Boolean)</span></tt><a class="headerlink" href="#final-boolean" title="Permalink to this headline">¶</a></h3>
+<p>Définit si un schéma peut etre utilisé pour valider un évènement, si final vaut false le schéma peut être utilisé dans un héritage de schéma.</p>
+</div>
+<div class="section" id="sample-object">
+<h3><tt class="docutils literal"><span class="pre">sample</span> <span class="pre">(Object)</span></tt><a class="headerlink" href="#sample-object" title="Permalink to this headline">¶</a></h3>
+<p>Contient un exemple de structure de données validant le schéma.</p>
+</div>
+<div class="section" id="template-string">
+<h3><tt class="docutils literal"><span class="pre">template</span> <span class="pre">(String)</span></tt><a class="headerlink" href="#template-string" title="Permalink to this headline">¶</a></h3>
+<p>Contient un template pouvant être utilisé pour obtenir une structure html simple d&#8217;un évènement utilisant ce schema</p>
+</div>
+<div class="section" id="id1">
+<h3><tt class="docutils literal"><span class="pre">status</span> <span class="pre">(Enum)</span></tt><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Définit le status du document:</dt>
+<dd><ul class="first last simple">
+<li>PUBLISHED : le document est utilisable</li>
+<li>DRAFT : le document est en cours de création, il n&#8217;est pas utilisable</li>
+<li>DEPRECATED : le document est utilisé, mais son utilisation pour valider de nouveau èvènements est déconseillée</li>
+</ul>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="document-de-type-group">
+<span id="doc-group"></span><h2>Document de type <em>group</em><a class="headerlink" href="#document-de-type-group" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Types de documents</a><ul>
+<li><a class="reference internal" href="#attributs-communs-a-tous-les-documents">Attributs communs à tous les documents</a><ul>
+<li><a class="reference internal" href="#common-id"><tt class="docutils literal"><span class="pre">_id</span> <span class="pre">(String)</span></tt></a></li>
+<li><a class="reference internal" href="#rev-string"><tt class="docutils literal"><span class="pre">_rev</span> <span class="pre">(String)</span></tt></a></li>
+<li><a class="reference internal" href="#type-string"><tt class="docutils literal"><span class="pre">type</span> <span class="pre">(String)</span></tt></a></li>
+<li><a class="reference internal" href="#hash-string"><tt class="docutils literal"><span class="pre">hash</span> <span class="pre">(String)</span></tt></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#document-de-type-user">Document de type <em>user</em></a><ul>
+<li><a class="reference internal" href="#first-name-string"><tt class="docutils literal"><span class="pre">first_name</span> <span class="pre">(String)</span></tt></a></li>
+<li><a class="reference internal" href="#last-name-string"><tt class="docutils literal"><span class="pre">last_name</span> <span class="pre">(String)</span></tt></a></li>
+<li><a class="reference internal" href="#email-string"><tt class="docutils literal"><span class="pre">email</span> <span class="pre">(String)</span></tt></a></li>
+<li><a class="reference internal" href="#password-string"><tt class="docutils literal"><span class="pre">password</span> <span class="pre">(String)</span></tt></a></li>
+<li><a class="reference internal" href="#is-active-boolean"><tt class="docutils literal"><span class="pre">is_active</span> <span class="pre">(Boolean)</span></tt></a></li>
+<li><a class="reference internal" href="#is-staff-boolean"><tt class="docutils literal"><span class="pre">is_staff</span> <span class="pre">(Boolean)</span></tt></a></li>
+<li><a class="reference internal" href="#is-superuser-boolean"><tt class="docutils literal"><span class="pre">is_superuser</span> <span class="pre">(Boolean)</span></tt></a></li>
+<li><a class="reference internal" href="#last-login-datetime"><tt class="docutils literal"><span class="pre">last_login</span> <span class="pre">(Datetime)</span></tt></a></li>
+<li><a class="reference internal" href="#date-joined-datetime"><tt class="docutils literal"><span class="pre">date_joined</span> <span class="pre">(Datetime)</span></tt></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#document-de-type-event">Document de type <em>event</em></a><ul>
+<li><a class="reference internal" href="#event-object"><tt class="docutils literal"><span class="pre">event</span> <span class="pre">(Object)</span></tt></a></li>
+<li><a class="reference internal" href="#author-string"><tt class="docutils literal"><span class="pre">author</span> <span class="pre">(String)</span></tt></a></li>
+<li><a class="reference internal" href="#status-enum"><tt class="docutils literal"><span class="pre">status</span> <span class="pre">(Enum)</span></tt></a></li>
+<li><a class="reference internal" href="#write-groups-list"><tt class="docutils literal"><span class="pre">write_groups</span> <span class="pre">(List)</span></tt></a></li>
+<li><a class="reference internal" href="#read-groups-list"><tt class="docutils literal"><span class="pre">read_groups</span> <span class="pre">(List)</span></tt></a></li>
+<li><a class="reference internal" href="#write-users-list"><tt class="docutils literal"><span class="pre">write_users</span> <span class="pre">(List)</span></tt></a></li>
+<li><a class="reference internal" href="#read-users-list"><tt class="docutils literal"><span class="pre">read_users</span> <span class="pre">(List)</span></tt></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#document-de-type-schema">Document de type <em>schema</em></a><ul>
+<li><a class="reference internal" href="#schema-object"><tt class="docutils literal"><span class="pre">schema</span> <span class="pre">(Object)</span></tt></a></li>
+<li><a class="reference internal" href="#final-boolean"><tt class="docutils literal"><span class="pre">final</span> <span class="pre">(Boolean)</span></tt></a></li>
+<li><a class="reference internal" href="#sample-object"><tt class="docutils literal"><span class="pre">sample</span> <span class="pre">(Object)</span></tt></a></li>
+<li><a class="reference internal" href="#template-string"><tt class="docutils literal"><span class="pre">template</span> <span class="pre">(String)</span></tt></a></li>
+<li><a class="reference internal" href="#id1"><tt class="docutils literal"><span class="pre">status</span> <span class="pre">(Enum)</span></tt></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#document-de-type-group">Document de type <em>group</em></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="rest.html"
+                        title="previous chapter">RESTful API</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/data.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="rest.html" title="RESTful API"
+             >previous</a> |</li>
+        <li><a href="index.html">Citizens Agenda v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Oxys SARL.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>
